@@ -1,4 +1,0 @@
-#Sun Apr 22 00:20:37 JST 2018
-base.0=C\:\\Users\\arata\\Dropbox\\Windows\\dev\\as\\begin_android\\Layout02\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-path.0=classes.dex
-renamed.0=classes.dex
