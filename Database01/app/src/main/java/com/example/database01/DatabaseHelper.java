@@ -5,9 +5,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "book";
+    private static final String DATABASE_NAME = "book.db";
 
     private static final int DATABASE_VERSION = 1;
+
+    private static final String[] INIT_DATA = {
+            "INSERT INTO book(name, price) VALUES('Android入門', 2980)",
+            "INSERT INTO book(name, price) VALUES('Java入門', 1980)"};
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -22,6 +26,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ddl += ")";
 
         db.execSQL(ddl);
+
+        try {
+            db.beginTransaction();
+
+            for (String initData : INIT_DATA) {
+                db.execSQL(initData);
+            }
+
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
     }
 
     @Override
