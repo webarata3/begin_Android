@@ -17,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
         allDataTextView = findViewById(R.id.allDataTextView);
 
         findViewById(R.id.viewButton).setOnClickListener(view-> {
-            view();
+            viewData();
         });
     }
 
-    private void view() {
+    private void viewData() {
         DatabaseHelper helper = new DatabaseHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
 

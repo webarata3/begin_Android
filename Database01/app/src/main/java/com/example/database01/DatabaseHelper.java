@@ -19,24 +19,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String ddl = "CREATE TABLE book(";
-        ddl += "id INTEGER PRIMARY KEY AUTOINCREMENT,";
-        ddl += "name TEXT,";
-        ddl += "price INTEGER";
-        ddl += ")";
+        String ddl = "CREATE TABLE book("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "name TEXT,"
+                + "price INTEGER"
+                + ")";
 
         db.execSQL(ddl);
 
-        try {
-            db.beginTransaction();
-
-            for (String initData : INIT_DATA) {
-                db.execSQL(initData);
-            }
-
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
+        for (String initData : INIT_DATA) {
+            db.execSQL(initData);
         }
     }
 
