@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         stmt.bindLong(2, price);
         long id = stmt.executeInsert();
 
-        Toast.makeText(this, "id=" + id, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "id=" + id + "を登録しました", Toast.LENGTH_SHORT).show();
 
         nameEditText.setText("");
         priceEditText.setText("");
