@@ -23,18 +23,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void viewData() {
         DatabaseHelper helper = new DatabaseHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
+        try (SQLiteDatabase db = helper.getWritableDatabase()) {
+            String sql = "SELECT * FROM book";
+            try (Cursor cursor = db.rawQuery(sql, null)) {
+                String result = "";
+                while (cursor.moveToNext()) {
+                    String name = cursor.getString(cursor.getColumnIndex("name"));
+                    int price = cursor.getInt(cursor.getColumnIndex("price"));
+                    result = result + name + "," + price + "\n";
+                }
 
-        String sql = "SELECT * FROM book";
-        try (Cursor cursor = db.rawQuery(sql, null)) {
-            String result = "";
-            while (cursor.moveToNext()) {
-                String name = cursor.getString(cursor.getColumnIndex("name"));
-                int price = cursor.getInt(cursor.getColumnIndex("price"));
-                result = result + name + "," + price + "\n";
+                allDataTextView.setText(result);
             }
-
-            allDataTextView.setText(result);
         }
     }
 }
