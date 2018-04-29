@@ -58,15 +58,16 @@ public class MainActivity extends AppCompatActivity {
         String name = nameEditText.getText().toString();
         int price = Integer.parseInt(priceEditText.getText().toString());
 
-        SQLiteDatabase db = helper.getWritableDatabase();
-        SQLiteStatement stmt = db.compileStatement(sql);
-        stmt.bindString(1, name);
-        stmt.bindLong(2, price);
-        long id = stmt.executeInsert();
+        try (SQLiteDatabase db = helper.getWritableDatabase()) {
+            SQLiteStatement stmt = db.compileStatement(sql);
+            stmt.bindString(1, name);
+            stmt.bindLong(2, price);
+            long id = stmt.executeInsert();
 
-        Toast.makeText(this, "id=" + id + "を登録しました", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "id=" + id + "を登録しました", Toast.LENGTH_SHORT).show();
 
-        nameEditText.setText("");
-        priceEditText.setText("");
+            nameEditText.setText("");
+            priceEditText.setText("");
+        }
     }
 }
