@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         nameEditText = findViewById(R.id.nameEditText);
         priceEditText = findViewById(R.id.priceEditText);
 
-        findViewById(R.id.viewButton).setOnClickListener(view-> {
+        findViewById(R.id.viewButton).setOnClickListener(view -> {
             viewData();
         });
 
@@ -60,24 +59,24 @@ public class MainActivity extends AppCompatActivity {
         String name = nameEditText.getText().toString();
         int price = Integer.parseInt(priceEditText.getText().toString());
 
-        SQLiteDatabase db = helper.getWritableDatabase();
-        try {
-            db.beginTransaction();
-            SQLiteStatement stmt = db.compileStatement(sql);
-            stmt.bindLong(1, 100);
-            stmt.bindString(2, name);
-            stmt.bindLong(3, price);
-            stmt.executeInsert();
-            stmt.executeInsert();
+        try (SQLiteDatabase db = helper.getWritableDatabase()) {
+            try {
+                db.beginTransaction();
+                SQLiteStatement stmt = db.compileStatement(sql);
+                stmt.bindLong(1, 100);
+                stmt.bindString(2, name);
+                stmt.bindLong(3, price);
+                stmt.executeInsert();
+                stmt.executeInsert();
 
-            db.setTransactionSuccessful();
+                db.setTransactionSuccessful();
 
-            Toast.makeText(this, "2回insertしました", Toast.LENGTH_SHORT).show();
-        } catch(SQLException e) {
-            Toast.makeText(this, "エラーが発生しました。" + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-        finally {
-            db.endTransaction();
+                Toast.makeText(this, "2回insertしました", Toast.LENGTH_SHORT).show();
+            } catch (SQLException e) {
+                Toast.makeText(this, "エラーが発生しました。" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            } finally {
+                db.endTransaction();
+            }
         }
 
         nameEditText.setText("");

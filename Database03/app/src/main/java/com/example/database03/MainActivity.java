@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         nameEditText = findViewById(R.id.nameEditText);
         priceEditText = findViewById(R.id.priceEditText);
 
-        findViewById(R.id.viewButton).setOnClickListener(view-> {
+        findViewById(R.id.viewButton).setOnClickListener(view -> {
             viewData();
         });
 
@@ -65,14 +65,14 @@ public class MainActivity extends AppCompatActivity {
         String name = nameEditText.getText().toString();
         int price = Integer.parseInt(priceEditText.getText().toString());
 
-        SQLiteDatabase db = helper.getWritableDatabase();
-        SQLiteStatement stmt = db.compileStatement(sql);
-        stmt.bindString(1, name);
-        stmt.bindLong(2, price);
-        stmt.bindLong(3, id);
-        int count = stmt.executeUpdateDelete();
-
-        Toast.makeText(this, count + "件更新しました", Toast.LENGTH_SHORT).show();
+        try (SQLiteDatabase db = helper.getWritableDatabase()) {
+            SQLiteStatement stmt = db.compileStatement(sql);
+            stmt.bindString(1, name);
+            stmt.bindLong(2, price);
+            stmt.bindLong(3, id);
+            int count = stmt.executeUpdateDelete();
+            Toast.makeText(this, count + "件更新しました", Toast.LENGTH_SHORT).show();
+        }
 
         idEditText.setText("");
         nameEditText.setText("");
@@ -83,12 +83,13 @@ public class MainActivity extends AppCompatActivity {
         String sql = "DELETE FROM book WHERE id=?";
         int id = Integer.parseInt(idEditText.getText().toString());
 
-        SQLiteDatabase db = helper.getWritableDatabase();
-        SQLiteStatement stmt = db.compileStatement(sql);
-        stmt.bindLong(1, id);
-        int count = stmt.executeUpdateDelete();
+        try (SQLiteDatabase db = helper.getWritableDatabase()) {
+            SQLiteStatement stmt = db.compileStatement(sql);
+            stmt.bindLong(1, id);
+            int count = stmt.executeUpdateDelete();
 
-        Toast.makeText(this, count + "件削除しました", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, count + "件削除しました", Toast.LENGTH_SHORT).show();
+        }
 
         idEditText.setText("");
         nameEditText.setText("");
