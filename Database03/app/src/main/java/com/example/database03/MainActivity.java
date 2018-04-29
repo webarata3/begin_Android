@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private TextView allDataTextView;
 
+    private EditText idEditText;
     private EditText nameEditText;
     private EditText priceEditText;
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         allDataTextView = findViewById(R.id.allDataTextView);
+        idEditText = findViewById(R.id.idEditText);
         nameEditText = findViewById(R.id.nameEditText);
         priceEditText = findViewById(R.id.priceEditText);
 
@@ -30,8 +32,12 @@ public class MainActivity extends AppCompatActivity {
             viewData();
         });
 
-        findViewById(R.id.insertButton).setOnClickListener(view -> {
-            insert();
+        findViewById(R.id.updateButton).setOnClickListener(view -> {
+            update();
+        });
+
+        findViewById(R.id.deleteButton).setOnClickListener(view -> {
+            delete();
         });
 
         helper = new DatabaseHelper(this);
@@ -53,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void insert() {
-        String sql = "INSERT INTO book(name, price) VALUES(?, ?)";
+    private void update() {
+        String sql = "UPDATE book SET name=?, price=? WHERE id=?";
+        int id = Integer.parseInt(idEditText.getText().toString());
         String name = nameEditText.getText().toString();
         int price = Integer.parseInt(priceEditText.getText().toString());
 
@@ -62,10 +69,28 @@ public class MainActivity extends AppCompatActivity {
         SQLiteStatement stmt = db.compileStatement(sql);
         stmt.bindString(1, name);
         stmt.bindLong(2, price);
-        long id = stmt.executeInsert();
+        stmt.bindLong(3, id);
+        int count = stmt.executeUpdateDelete();
 
-        Toast.makeText(this, "id=" + id, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, count + "件更新しました", Toast.LENGTH_SHORT).show();
 
+        idEditText.setText("");
+        nameEditText.setText("");
+        priceEditText.setText("");
+    }
+
+    private void delete() {
+        String sql = "DELETE FROM book WHERE id=?";
+        int id = Integer.parseInt(idEditText.getText().toString());
+
+        SQLiteDatabase db = helper.getWritableDatabase();
+        SQLiteStatement stmt = db.compileStatement(sql);
+        stmt.bindLong(1, id);
+        int count = stmt.executeUpdateDelete();
+
+        Toast.makeText(this, count + "件削除しました", Toast.LENGTH_SHORT).show();
+
+        idEditText.setText("");
         nameEditText.setText("");
         priceEditText.setText("");
     }
