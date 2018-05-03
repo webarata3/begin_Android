@@ -3,9 +3,6 @@ package com.example.database05;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "book.db";
@@ -38,18 +35,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(ddl);
 
-        executeInTransaction(() -> {
+        executeInTransaction(db, () -> {
             BookDao bookDao = new BookDao(db);
             bookDao.insert(new Book("Android入門", 2980));
             bookDao.insert(new Book("Java入門", 1980));
-        }, db);
+        });
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    public void executeInTransaction(ExecuteSql executeSql, SQLiteDatabase db) {
+    public void executeInTransaction(SQLiteDatabase db, ExecuteSql executeSql) {
         appExecutors.diskIo().execute(() -> {
             db.beginTransaction();
             try {
@@ -61,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         });
     }
 
-    public void executeQuery(FetchDb fetchDb, SQLiteDatabase db) {
+    public void executeQuery(SQLiteDatabase db, FetchDb fetchDb) {
         appExecutors.diskIo().execute(() -> {
             fetchDb.execute(db);
         });

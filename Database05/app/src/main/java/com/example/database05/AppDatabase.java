@@ -20,10 +20,10 @@ public class AppDatabase {
     }
 
     public void executeInTransaction(ExecuteSql executeSql) {
-        databaseHelper.executeInTransaction(executeSql, db);
+        databaseHelper.executeInTransaction(db, executeSql);
     }
 
     public void executeQuery(FetchDb fetchDb) {
-        databaseHelper.executeQuery(fetchDb, db);
+        databaseHelper.executeQuery(db, fetchDb);
     }
 }
