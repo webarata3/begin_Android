@@ -19,11 +19,11 @@ public class AppDatabase {
         return instance;
     }
 
-    public void executeInTransaction(ExecuteSql executeSql) {
-        databaseHelper.executeInTransaction(db, executeSql);
+    public void executeInTransaction(CallbackSql callbackSql) {
+        databaseHelper.executeInTransaction(db, callbackSql);
     }
 
-    public void executeQuery(FetchDb fetchDb) {
-        databaseHelper.executeQuery(db, fetchDb);
+    public void executeQuery(CallbackSql callbackSql) {
+        databaseHelper.executeQuery(db, callbackSql);
     }
 }

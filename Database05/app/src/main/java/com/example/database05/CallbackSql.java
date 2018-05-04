@@ -2,8 +2,6 @@ package com.example.database05;
 
 import android.database.sqlite.SQLiteDatabase;
 
-import java.util.List;
-
-public interface FetchDb {
+public interface CallbackSql {
     void execute(SQLiteDatabase db);
 }

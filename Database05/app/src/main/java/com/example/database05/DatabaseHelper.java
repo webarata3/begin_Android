@@ -35,22 +35,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(ddl);
 
-        executeInTransaction(db, () -> {
-            BookDao bookDao = new BookDao(db);
-            bookDao.insert(new Book("Android入門", 2980));
-            bookDao.insert(new Book("Java入門", 1980));
-        });
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-    }
-
-    public void executeInTransaction(SQLiteDatabase db, ExecuteSql executeSql) {
         appExecutors.diskIo().execute(() -> {
             db.beginTransaction();
             try {
-                executeSql.execute();
+                BookDao bookDao = new BookDao(db);
+                bookDao.insert(new Book("Android入門", 2980));
+                bookDao.insert(new Book("Java入門", 1980));
                 db.setTransactionSuccessful();
             } finally {
                 db.endTransaction();
@@ -58,9 +48,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         });
     }
 
-    public void executeQuery(SQLiteDatabase db, FetchDb fetchDb) {
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    }
+
+    public void executeInTransaction(SQLiteDatabase db, CallbackSql callbackSql) {
         appExecutors.diskIo().execute(() -> {
-            fetchDb.execute(db);
+            db.beginTransaction();
+            try {
+                callbackSql.execute(db);
+                db.setTransactionSuccessful();
+            } finally {
+                db.endTransaction();
+            }
+        });
+    }
+
+    public void executeQuery(SQLiteDatabase db, CallbackSql callbackSql) {
+        appExecutors.diskIo().execute(() -> {
+            callbackSql.execute(db);
         });
     }
 }

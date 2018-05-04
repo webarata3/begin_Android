@@ -9,6 +9,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private AppExecutors appExecutors;
+    private AppDatabase appDatabase;
 
     private TextView allDataTextView;
 
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
         appExecutors = new AppExecutors();
 
+        appDatabase = AppDatabase.getInstance(DatabaseHelper.getInstance(this, appExecutors));
+
         allDataTextView = findViewById(R.id.allDataTextView);
 
         findViewById(R.id.viewButton).setOnClickListener(view -> {
@@ -26,17 +29,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public DatabaseHelper getDatabaseHelper() {
-        return DatabaseHelper.getInstance (this, appExecutors);
-    }
-
-    public AppDatabase getAppDatabase() {
-        return AppDatabase.getInstance(getDatabaseHelper());
-    }
-
     private void view() {
-        AppDatabase appDatabase = getAppDatabase();
-
         appDatabase.executeQuery(db -> {
             BookDao bookDao = new BookDao(db);
             List<Book> bookList = bookDao.selectAll();
