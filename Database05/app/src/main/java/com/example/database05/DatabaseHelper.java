@@ -35,17 +35,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(ddl);
 
-        appExecutors.diskIo().execute(() -> {
-            db.beginTransaction();
-            try {
-                BookDao bookDao = new BookDao(db);
-                bookDao.insert(new Book("Android入門", 2980));
-                bookDao.insert(new Book("Java入門", 1980));
-                db.setTransactionSuccessful();
-            } finally {
-                db.endTransaction();
-            }
-        });
+        // dbとwriteableDbは最終的には同じものを指す
+        executeInTransaction(db, writableDb -> {
+            BookDao bookDao = new BookDao(writableDb);
+            bookDao.insert(new Book("Android入門", 2980));
+            bookDao.insert(new Book("Java入門", 1980));
+       });
     }
 
     @Override
