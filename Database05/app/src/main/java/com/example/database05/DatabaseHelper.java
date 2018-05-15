@@ -62,6 +62,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void executeQuery(SQLiteDatabase db, CallbackSql callbackSql) {
         appExecutors.diskIo().execute(() -> {
             callbackSql.execute(db);
-        });
-    }
+        });    }
 }
