@@ -40,7 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             BookDao bookDao = new BookDao(writableDb);
             bookDao.insert(new Book("Android入門", 2980));
             bookDao.insert(new Book("Java入門", 1980));
-       });
+        });
     }
 
     @Override
@@ -62,5 +62,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void executeQuery(SQLiteDatabase db, CallbackSql callbackSql) {
         appExecutors.diskIo().execute(() -> {
             callbackSql.execute(db);
-        });    }
+        });
+    }
 }

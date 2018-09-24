@@ -8,7 +8,6 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class AppExecutors {
-
     private final Executor diskIo;
     private final Executor mainThread;
 
