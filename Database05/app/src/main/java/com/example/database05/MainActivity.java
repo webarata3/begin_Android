@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         appExecutors = new AppExecutors();
 
-        appDatabase = AppDatabase.getInstance(DatabaseHelper.getInstance(this, appExecutors));
+        appDatabase = AppDatabase.getInstance(this, appExecutors);
 
         allDataTextView = findViewById(R.id.allDataTextView);
 
