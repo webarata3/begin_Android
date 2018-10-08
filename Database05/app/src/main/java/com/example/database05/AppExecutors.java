@@ -11,14 +11,20 @@ public class AppExecutors {
     private final Executor diskIo;
     private final Executor mainThread;
 
-    private AppExecutors(Executor diskIo, Executor mainThread) {
-        this.diskIo = diskIo;
-        this.mainThread = mainThread;
+    private static AppExecutors appExecutors;
+
+    public static synchronized AppExecutors getInstance() {
+        if (appExecutors == null) {
+            appExecutors = new AppExecutors();
+        }
+        return appExecutors;
     }
 
-    public AppExecutors() {
-        this(Executors.newSingleThreadExecutor(), new MainThreadExecutor());
+    private AppExecutors() {
+        this.diskIo = Executors.newSingleThreadExecutor();
+        this.mainThread = new MainThreadExecutor();
     }
+
 
     public Executor diskIo() {
         return diskIo;

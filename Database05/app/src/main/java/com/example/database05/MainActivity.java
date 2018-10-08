@@ -9,7 +9,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private AppExecutors appExecutors;
-    private AppDatabase appDatabase;
 
     private TextView allDataTextView;
 
@@ -18,10 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        appExecutors = new AppExecutors();
-
-        appDatabase = AppDatabase.getInstance(this, appExecutors);
-
+        appExecutors = AppExecutors.getInstance();
         allDataTextView = findViewById(R.id.allDataTextView);
 
         findViewById(R.id.viewButton).setOnClickListener(view -> {
@@ -30,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void view() {
-        appDatabase.executeQuery(db -> {
+        DatabaseHelper dbHelper = new DatabaseHelper(this, appExecutors);
+        dbHelper.executeQuery(db -> {
             BookDao bookDao = new BookDao(db);
             List<Book> bookList = bookDao.selectAll();
 
