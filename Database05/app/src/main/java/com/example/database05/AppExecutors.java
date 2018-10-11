@@ -2,10 +2,11 @@ package com.example.database05;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+
+import androidx.annotation.NonNull;
 
 public class AppExecutors {
     private final Executor diskIo;
@@ -24,7 +25,6 @@ public class AppExecutors {
         this.diskIo = Executors.newSingleThreadExecutor();
         this.mainThread = new MainThreadExecutor();
     }
-
 
     public Executor diskIo() {
         return diskIo;

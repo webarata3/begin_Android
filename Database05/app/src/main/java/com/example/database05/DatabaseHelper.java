@@ -9,16 +9,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
 
-    private final AppExecutors appExecutors;
-
-    public DatabaseHelper(Context context, AppExecutors appExecutors) {
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.appExecutors = appExecutors;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        appExecutors.diskIo().execute(() -> {
+        AppExecutors.getInstance().diskIo().execute(() -> {
             String ddl = "CREATE TABLE book(";
             ddl += "id INTEGER PRIMARY KEY AUTOINCREMENT,";
             ddl += "name TEXT,";
@@ -39,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void executeInTransaction(CallbackSql callbackSql) {
         SQLiteDatabase db = getWritableDatabase();
 
-        appExecutors.diskIo().execute(() -> {
+        AppExecutors.getInstance().diskIo().execute(() -> {
             db.beginTransaction();
             try {
                 callbackSql.execute(db);
@@ -53,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void executeQuery(CallbackSql callbackSql) {
         SQLiteDatabase db = getReadableDatabase();
 
-        appExecutors.diskIo().execute(() -> {
+        AppExecutors.getInstance().diskIo().execute(() -> {
             callbackSql.execute(db);
         });
     }

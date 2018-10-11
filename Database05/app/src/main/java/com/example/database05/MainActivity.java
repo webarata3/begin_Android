@@ -1,15 +1,13 @@
 package com.example.database05;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-    private AppExecutors appExecutors;
+import androidx.appcompat.app.AppCompatActivity;
 
+public class MainActivity extends AppCompatActivity {
     private TextView allDataTextView;
 
     @Override
@@ -17,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        appExecutors = AppExecutors.getInstance();
         allDataTextView = findViewById(R.id.allDataTextView);
 
         findViewById(R.id.viewButton).setOnClickListener(view -> {
@@ -26,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void view() {
-        DatabaseHelper dbHelper = new DatabaseHelper(this, appExecutors);
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
         dbHelper.executeQuery(db -> {
             BookDao bookDao = new BookDao(db);
             List<Book> bookList = bookDao.selectAll();
 
-            appExecutors.mainThread().execute(() -> {
+            AppExecutors.getInstance().mainThread().execute(() -> {
                 String listText = "";
                 for (Book book : bookList) {
                     listText = listText + book.getName() + "," + book.getPrice() + "\n";
