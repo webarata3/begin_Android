@@ -3,8 +3,9 @@ package com.example.database01;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private TextView allDataTextView;
@@ -16,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         allDataTextView = findViewById(R.id.allDataTextView);
 
-        findViewById(R.id.viewButton).setOnClickListener(view-> {
+        findViewById(R.id.viewButton).setOnClickListener(view -> {
             viewData();
         });
     }
