@@ -92,22 +92,22 @@
             android:textSize="30sp" />
 
         <TextView
-            style="@style/common"
+            style="@style/Common"
             android:text="あいうABC 1.0"
             android:textScaleX="1.0" />
 
         <TextView
-            style="@style/common"
+            style="@style/Common"
             android:text="あいうABC 1.5"
             android:textScaleX="1.5" />
 
         <TextView
-            style="@style/common"
+            style="@style/Common"
             android:text="あいうABC 2.0"
             android:textScaleX="2.0" />
 
         <TextView
-            style="@style/common"
+            style="@style/Common"
             android:text="あいうABC 5.0"
             android:textScaleX="5.0" />
 
