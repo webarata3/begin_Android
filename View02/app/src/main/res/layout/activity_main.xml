@@ -1,71 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:autoLink="all"
+        android:text="autoLink http://example.com test@example.com" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="maxLines=1 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="all"
-            android:text="http://example.com test@example.com" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="10dp"
+        android:text="lineSpacingExtra=10dp 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
 
-        <!-- singleLineはdeprecated -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="maxLines=1 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.5"
+        android:text="lineSpacingMultiplier=1.5 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="10dp"
-            android:text="lineSpacingExtra=10dp 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="start"
+        android:singleLine="true"
+        android:text="ellipsize=start 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingMultiplier="1.5"
-            android:text="lineSpacingMultiplier=1.5 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="ellipsize=end 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="start"
-            android:singleLine="true"
-            android:text="ellipsize=start 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="middle"
+        android:singleLine="true"
+        android:text="ellipsize=middle 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:text="ellipsize=end 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="textIsSelectable=true 選択可能なテキスト"
+        android:textIsSelectable="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="middle"
-            android:singleLine="true"
-            android:text="ellipsize=middle 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="textIsSelectable=true 選択可能なテキスト"
-            android:textIsSelectable="true" />
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>
