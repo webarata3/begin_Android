@@ -1,172 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:textColor="#ff0000"
+        android:background="#ffff00"
+        android:text="色の指定" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#80ffffff"
-            android:text="こんにちはABCabc123"
-            android:textColor="#000"
-            android:textSize="30sp"
-            android:textStyle="normal"
-            android:typeface="normal" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="30sp bold normal"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:typeface="normal" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#80ffffff"
-            android:text="こんにちはABCabc123"
-            android:textColor="#000"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:typeface="normal" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="30sp italic normal"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:typeface="normal" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#80ffffff"
-            android:text="こんにちはABCabc123"
-            android:textColor="#000"
-            android:textSize="30sp"
-            android:textStyle="italic"
-            android:typeface="normal" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="30sp bold+italic normal"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        android:typeface="normal" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#80ffffff"
-            android:text="こんにちはABCabc123"
-            android:textColor="#000"
-            android:textSize="30sp"
-            android:textStyle="bold|italic"
-            android:typeface="normal" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="30sp sans"
+        android:textSize="30sp"
+        android:typeface="sans" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#80ffffff"
-            android:text="こんにちはABCabc123"
-            android:textColor="#000"
-            android:textSize="30sp"
-            android:textStyle="normal"
-            android:typeface="sans" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="30sp serif"
+        android:textSize="30sp"
+        android:typeface="serif" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#80ffffff"
-            android:text="こんにちはABCabc123"
-            android:textColor="#000"
-            android:textSize="30sp"
-            android:textStyle="normal"
-            android:typeface="serif" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="30sp monospace"
+        android:textSize="30sp"
+        android:typeface="monospace" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#80ffffff"
-            android:text="こんにちはABCabc123"
-            android:textColor="#000"
-            android:textSize="30sp"
-            android:textStyle="normal"
-            android:typeface="monospace" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="影をつける"
+        android:shadowColor="#f00"
+        android:shadowDx="10.0"
+        android:shadowDy="10.0"
+        android:shadowRadius="1.0"
+        android:textSize="30sp" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:shadowColor="#f00"
-            android:shadowDx="10.0"
-            android:shadowDy="10.0"
-            android:shadowRadius="1.0"
-            android:text="こんにちはABCabc123"
-            android:textColor="#000"
-            android:textSize="30sp" />
+    <TextView
+        style="@style/CodeFont"
+        android:text="スタイル CodeFont" />
 
-        <TextView
-            style="@style/Common"
-            android:text="あいうABC 1.0"
-            android:textScaleX="1.0" />
-
-        <TextView
-            style="@style/Common"
-            android:text="あいうABC 1.5"
-            android:textScaleX="1.5" />
-
-        <TextView
-            style="@style/Common"
-            android:text="あいうABC 2.0"
-            android:textScaleX="2.0" />
-
-        <TextView
-            style="@style/Common"
-            android:text="あいうABC 5.0"
-            android:textScaleX="5.0" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="all"
-            android:text="http://example.com test@example.com" />
-
-        <!-- singleLineはdeprecated -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="maxLines=1 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="10dp"
-            android:text="lineSpacingExtra=10dp 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingMultiplier="1.5"
-            android:text="lineSpacingMultiplier=1.5 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="start"
-            android:singleLine="true"
-            android:text="ellipsize=start 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:text="ellipsize=end 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="middle"
-            android:singleLine="true"
-            android:text="ellipsize=middle 長い長いテキストあいうえおかきくけこさしすせそたちつてとなにぬねの" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="textIsSelectable=true 選択可能なテキスト"
-            android:textIsSelectable="true" />
-
-    </LinearLayout>
-</ScrollView>
+    <TextView
+        style="@style/CodeFont.Blue"
+        android:text="スタイル CodeFont.Blue" />
+</LinearLayout>
