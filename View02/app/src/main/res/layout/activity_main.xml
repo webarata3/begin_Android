@@ -11,26 +11,6 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/Common"
-            android:text="あいうABC 1.0"
-            android:textScaleX="1.0" />
-
-        <TextView
-            style="@style/Common"
-            android:text="あいうABC 1.5"
-            android:textScaleX="1.5" />
-
-        <TextView
-            style="@style/Common"
-            android:text="あいうABC 2.0"
-            android:textScaleX="2.0" />
-
-        <TextView
-            style="@style/Common"
-            android:text="あいうABC 5.0"
-            android:textScaleX="5.0" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello World!" />

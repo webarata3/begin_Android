@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,12 +9,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#ff0000"
         android:background="#ffff00"
-        android:text="色の指定" />
+        android:text="色の指定"
+        android:textColor="#ff0000" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="30sp bold normal"
         android:textSize="30sp"
@@ -23,7 +22,7 @@
         android:typeface="normal" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="30sp italic normal"
         android:textSize="30sp"
@@ -31,7 +30,7 @@
         android:typeface="normal" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="30sp bold+italic normal"
         android:textSize="30sp"
@@ -39,34 +38,34 @@
         android:typeface="normal" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="30sp sans"
         android:textSize="30sp"
         android:typeface="sans" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="30sp serif"
         android:textSize="30sp"
         android:typeface="serif" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="30sp monospace"
         android:textSize="30sp"
         android:typeface="monospace" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="影をつける"
         android:shadowColor="#f00"
         android:shadowDx="10.0"
         android:shadowDy="10.0"
         android:shadowRadius="1.0"
+        android:text="影をつける"
         android:textSize="30sp" />
 
     <TextView
@@ -76,4 +75,13 @@
     <TextView
         style="@style/CodeFont.Blue"
         android:text="スタイル CodeFont.Blue" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="scaleX=2 あいうABC 2.0"
+        android:textScaleX="2.0" />
+
 </LinearLayout>
