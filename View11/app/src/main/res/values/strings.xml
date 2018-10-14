@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">View11</string>
+
+    <string-array name="test_array">
+        <item>あいうえお</item>
+        <item>かきくけこ</item>
+        <item>さしすせそ</item>
+        <item>たちつてと</item>
+        <item>なにぬねの</item>
+        <item>はひふへほ</item>
+        <item>まみむめも</item>
+        <item>や　ゆ　よ</item>
+        <item>らりるれろ</item>
+        <item>わをん　　</item>
+    </string-array>
+</resources>
