@@ -2,12 +2,12 @@ package com.example.view14;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -46,6 +46,10 @@ public class SampleAdapter extends BaseAdapter {
         ImageView imageView = convertView.findViewById(R.id.imageView);
         TextView noTextView = convertView.findViewById(R.id.noTextView);
         TextView nameTextView = convertView.findViewById(R.id.nameTextView);
+        convertView.findViewById(R.id.button).setOnClickListener(view -> {
+            ((ListView) parent).performItemClick(view, position, R.id.button);
+        });
+
         Sample sample = sampleList.get(position);
         imageView.setImageBitmap(BitmapFactory.decodeResource(convertView.getResources(), R.drawable.sample));
         noTextView.setText(String.valueOf(sample.getNo()));

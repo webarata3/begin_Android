@@ -2,6 +2,7 @@ package com.example.view14;
 
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,5 +24,14 @@ public class MainActivity extends AppCompatActivity {
         SampleAdapter sampleAdapter = new SampleAdapter(this, sampleList);
         ListView listView = findViewById(R.id.listView);
         listView.setAdapter(sampleAdapter);
+
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            switch (view.getId()) {
+                case R.id.button:
+                    Toast.makeText(MainActivity.this, i + "番目のボタンが押されました。",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        });
     }
 }
